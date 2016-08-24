@@ -23,6 +23,7 @@ public class PSOProgress: Hashable, CustomStringConvertible, CustomDebugStringCo
         return NSBundle(forClass: self.dynamicType)
     }()
     
+    //MARK: Localized Description & Unit
     var localizedDescription: String{
         let unit = localizedUnitName ?? "unit(s)"
         
@@ -38,6 +39,15 @@ public class PSOProgress: Hashable, CustomStringConvertible, CustomDebugStringCo
     
     // Localized Unit for the localized Description
     var localizedUnitName: String?
+    
+    // MARK: Source User Additional Description
+    var additionalInformation: String?{
+        didSet{
+            psoDispatch_sync_to_main_queue { 
+                NSNotificationCenter.defaultCenter().postNotificationName(PSOProgress.PSOPROGRESS_CHANGED_NOTIFICATION, object: self)
+            }
+        }
+    }
     
     
     // unique identifier
