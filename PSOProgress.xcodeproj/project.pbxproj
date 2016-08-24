@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		896CB2B01D6E60C500CBA9BD /* PSOProgress.strings in Resources */ = {isa = PBXBuildFile; fileRef = 896CB2B21D6E60C500CBA9BD /* PSOProgress.strings */; };
+		896CB2B41D6E644200CBA9BD /* PSOProgress.strings in Resources */ = {isa = PBXBuildFile; fileRef = 896CB2B21D6E60C500CBA9BD /* PSOProgress.strings */; };
 		89B22CC31D6CB62A005B2565 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B22CC21D6CB62A005B2565 /* AppDelegate.swift */; };
 		89B22CC51D6CB62A005B2565 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B22CC41D6CB62A005B2565 /* ViewController.swift */; };
 		89B22CC81D6CB62A005B2565 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89B22CC61D6CB62A005B2565 /* Main.storyboard */; };
@@ -29,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		896CB2B11D6E60C500CBA9BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PSOProgress.strings; sourceTree = "<group>"; };
+		896CB2B31D6E60D500CBA9BD /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/PSOProgress.strings; sourceTree = "<group>"; };
 		89B22CBF1D6CB62A005B2565 /* PSOProgress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PSOProgress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89B22CC21D6CB62A005B2565 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89B22CC41D6CB62A005B2565 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 			children = (
 				89B22CD71D6CB62A005B2565 /* PSOProgressTests.swift */,
 				89B22CD91D6CB62A005B2565 /* Info.plist */,
+				896CB2B21D6E60C500CBA9BD /* PSOProgress.strings */,
 			);
 			path = PSOProgressTests;
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 89B22CB61D6CB62A005B2565;
 			productRefGroup = 89B22CC01D6CB62A005B2565 /* Products */;
@@ -188,6 +194,7 @@
 			files = (
 				89FFD0D91D6E246E009B7641 /* .gitignore in Resources */,
 				89B22CCD1D6CB62A005B2565 /* LaunchScreen.storyboard in Resources */,
+				896CB2B41D6E644200CBA9BD /* PSOProgress.strings in Resources */,
 				89B22CCA1D6CB62A005B2565 /* Assets.xcassets in Resources */,
 				89B22CC81D6CB62A005B2565 /* Main.storyboard in Resources */,
 			);
@@ -197,6 +204,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				896CB2B01D6E60C500CBA9BD /* PSOProgress.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +241,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		896CB2B21D6E60C500CBA9BD /* PSOProgress.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				896CB2B11D6E60C500CBA9BD /* en */,
+				896CB2B31D6E60D500CBA9BD /* es */,
+			);
+			name = PSOProgress.strings;
+			sourceTree = "<group>";
+		};
 		89B22CC61D6CB62A005B2565 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

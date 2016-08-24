@@ -199,4 +199,19 @@ class PSOProgressTests: XCTestCase {
 
     }
     
+    func testProgressLocalization(){
+        let downloadProgress = PSOProgress(totalUnitCount: 10)
+        downloadProgress.localizedUnitName = "Bytes"
+        
+        for _ in 0 ..< downloadProgress.totalUnitCount!{
+            print(downloadProgress.localizedDescription)
+            
+            downloadProgress.completedUnitCount += 1
+            XCTAssert(downloadProgress.localizedDescription.characters.count > 0, "localization should not be empty")
+            
+        }
+        
+        print(downloadProgress.localizedDescription)
+    }
+    
 }

@@ -1,0 +1,8 @@
+/* 
+  PSOProgress.strings
+  PSOProgress
+
+  Created by Jose Ines Cantu Arrambide on 8/24/16.
+  Copyright © 2016 Jose Ines Cantu Arrambide. All rights reserved.
+*/
+"LCompleted %li %@ of %li" = "Completado %li %@ de %li";

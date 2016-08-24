@@ -19,11 +19,29 @@ public class PSOProgress: Hashable, CustomStringConvertible, CustomDebugStringCo
     
     public static let PSOPROGRESS_CHANGED_NOTIFICATION = "PSOProgress_Changed"
     
+    private lazy var bundle: NSBundle = {
+        return NSBundle(forClass: self.dynamicType)
+    }()
     
-    var localizedDescription: String?
-    var localizedAdditionalDescription: String?
+    var localizedDescription: String{
+        let unit = localizedUnitName ?? "unit(s)"
+        
+        let localizedString = NSLocalizedString("LCompleted %li %@ of %li", tableName: "PSOProgress", bundle: self.bundle, value: "", comment: "")
+        
+        if let totalUnitCount = self.totalUnitCount{
+            return String(format: localizedString, completedUnitCount, unit, totalUnitCount)
+        }
+        else{
+            return String(format: localizedString, completedUnitCount)            
+        }
+    }
     
-    var identifier = NSUUID().UUIDString
+    // Localized Unit for the localized Description
+    var localizedUnitName: String?
+    
+    
+    // unique identifier
+    private(set) var identifier = NSUUID().UUIDString
     
     var name: String?
     weak var parent: PSOProgress?
@@ -56,6 +74,8 @@ public class PSOProgress: Hashable, CustomStringConvertible, CustomDebugStringCo
     }
     
     //MARK: Total & Completed Unit Count
+    
+    // number of units to complete
     var totalUnitCount: Int?{
         didSet{
             guard totalUnitCount >= 0 else{
@@ -67,6 +87,7 @@ public class PSOProgress: Hashable, CustomStringConvertible, CustomDebugStringCo
         }
     }
     
+    // Number of completed units
     var completedUnitCount: Int = 0{
         didSet{
             guard completedUnitCount >= 0 else{
@@ -79,6 +100,8 @@ public class PSOProgress: Hashable, CustomStringConvertible, CustomDebugStringCo
     }
     
     private var lastProgressNotification: Double = 0
+    
+    //Progress express in decimal between 0 and 1
     private(set) var progress: Double = 0{
         didSet{
             guard progress >= 0 else{
@@ -95,6 +118,7 @@ public class PSOProgress: Hashable, CustomStringConvertible, CustomDebugStringCo
             
             if (abs(lastProgressNotification - progress) >= 0.01 || progress == 1 || progress == 0){
                 lastProgressNotification = progress
+                
                 psoDispatch_sync_to_main_queue {
                     NSNotificationCenter.defaultCenter().postNotificationName(PSOProgress.PSOPROGRESS_CHANGED_NOTIFICATION, object: self)
                 }
