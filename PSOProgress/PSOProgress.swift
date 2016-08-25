@@ -93,7 +93,7 @@ public class PSOProgress: Hashable, CustomStringConvertible, CustomDebugStringCo
                 return
             }
             
-            compute()
+            updateProgressValue()
         }
     }
     
@@ -105,7 +105,14 @@ public class PSOProgress: Hashable, CustomStringConvertible, CustomDebugStringCo
                 return
             }
             
-            compute()
+            if totalUnitCount == nil{
+                psoDispatch_sync_to_main_queue({ 
+                    NSNotificationCenter.defaultCenter().postNotificationName(PSOProgress.PSOPROGRESS_CHANGED_NOTIFICATION, object: self)
+                })
+            }
+            else{
+                updateProgressValue()
+            }
         }
     }
     
@@ -142,12 +149,12 @@ public class PSOProgress: Hashable, CustomStringConvertible, CustomDebugStringCo
     
     // MARK: Children Notification
     private func childrenDidChange(sender: PSOProgress){
-        compute()
+        updateProgressValue()
     }
     
 
     // MARK: Computation
-    private func compute(){
+    private func updateProgressValue(){
         
         if childs.count > 0 {
             let totalChildPendingCount = childs.reduce(0, combine: { (currentTotal , child) -> Int in
